@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/style.css">
+    <link rel="stylesheet" href="../public/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Admin-page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
+
+</head>
+
+<body class="overflow-x-hidden">
+    <!-- main -->
+    <main class="grid md:grid-cols-12 grid-cols-1 h-screen w-screen ">
+
+        <!-- konten kiri -->
+        <aside class="bg-white md:py-28 md:p-10 relative hidden md:block mx-auto">
+            <nav class="fixed">
+                <ul class="w-12">
+                    <li><i class="fas fa-home my-3"></i>
+                        <div class="text-sm absolute -top-2 bg-red-500 rounded-full w-5 text-center text-white h-5">
+                            12</div>
+                    </li>
+                    <li><i class="fas fa-award my-3"></i></li>
+                    <li><i class="fas fa-clipboard my-3"></i></li>
+                    <li><i class="fas fa-question-circle my-3 my-3"></i></li>
+                    <li><i class="fas fa-bug my-3"></i></li>
+                    <li><i class="fas fa-cogs my-3"></i></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!--kontent-->
+        <aside class="ml-10 md:col-span-10 col-span-12 p-5 md:p-10 pt-3 md:grid-flow-col">
+            <!-- kontent kiri -->
+            <nav class="grid grid-cols-2  order-1 md:grid-cols-3  items-center mb-12 grid">
+                <h1 class="font-bold text-3xl">Dashboard</h1>
+                <!-- search bar -->
+                <div
+                    class="flex w-full col-span-2 mt-5 md:mt-0 md:col-span-1 mx-auto md:order-2 bg-white rounded-lg shadow-md pl-3 pr-32 py-3 row-start-2 row-end-3 md:row-span-2  ">
+                    <i class="fa fa-search  justify-center mr-3"></i>
+                    <input class="focus:outline-none" type="text" placeholder="Cari sesuatu..." onchange="inputTyping">
+                </div>
+                <!-- Profile -->
+                <div class="flex order-2 md:order-3 gap-x-5 justify-self-end ">
+                    <i class="fa fa-envelope "></i>
+                    <i class="fa fa-bell "></i>
+                    <div>
+                        <img class="rounded-full w-10 h-10 " src="../public/imgs/1.jpg" alt="">
+                    </div>
+                    <i class="fa fa-chevron-down"></i>
+                </div>
+            </nav>
+
+            <!-- kontent kanan-->
+            <section class="flex justify-between grid md:grid-flow-col">
+                <!-- content kiri  -->
+                <div>
+                    <div class="grid md:grid-flow-col gap-x-5 mx-auto">
+                        <!-- box atas -->
+                        <div class="grid md:grid-flow-col text-white">
+                            <div class="box-border h-32 w-40 p-4 shadow-md mx-2 md:my-0 my-2 rounded-2xl bg-gradient-to-r
+                                from-purple-600 to-blue-500 w-full md:w-40">
+                                <i class="fa fa-random"></i>
+                                <p class="text-xs my-2 text-xl md:text-sm">Transfer via card number</p>
+                                <h4 class="font-bold text-xl md:text-sm">$2900</h4>
+                            </div>
+                            <div class="box-border h-32 w-40 p-4 shadow-md mx-2 md:my-0 my-2 rounded-2xl bg-gradient-to-r
+                                from-purple-600 to-blue-500 w-full md:w-40">
+                                <i class="fa fa-money-check-alt"></i>
+                                <p class="text-xs my-2 text-xl md:text-sm">Transfer Other Bank</p>
+                                <h4 class="font-bold text-xl md:text-sm">$2900</h4>
+                            </div>
+                            <div class="box-border h-32 w-40 p-4 shadow-md mx-2 md:my-0 my-2 rounded-2xl bg-gradient-to-r
+                                from-purple-600 to-blue-500 w-full md:w-40">
+                                <i class="fa fa-money-check"></i>
+                                <p class="text-xs my-2 text-xl md:text-sm">Transfer Same Bank</p>
+                                <h4 class="font-bold text-xl md:text-sm">$2900</h4>
+                            </div>
+                            <div class="box-border h-32 w-40 p-4 shadow-md mx-2 md:my-0 my-2 rounded-2xl bg-gradient-to-r
+                                from-purple-600 to-blue-500 w-full md:w-40">
+                                <i class="fa fa-money-bill"></i>
+                                <p class="text-xs my-2 text-xl md:text-sm">Transfer to Other Bank</p>
+                                <h4 class="font-bold text-xl md:text-sm">$2900</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-8">
+                        <!-- grafik aktifitas -->
+                        <div>
+                            <h1 class="">Activity</h1>
+                            <h1 class="text-2xl font-bold">2021</h1>
+                            <div class="transform-scale scale-150">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+                        <!-- history -->
+                        <div class="my-8 text-gray-500">
+                            <p class="text-xl font-bold text-black">History</p>
+                            <p class="text-gray-500 mb-5">Trasnsaction of last 3 month</p>
+                            <div class="grid grid-cols-2 md:grid-cols-none py-2">
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10 mb-3">
+                                    <p>Loon Sound</p>
+                                    <p>10:42:36 AM</p>
+                                    <p>$200.00</p>
+                                    <p>Completed</p>
+                                </div>
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10 mb-3">
+                                    <p>Loon Sound</p>
+                                    <p>10:42:36 AM</p>
+                                    <p>$200.00</p>
+                                    <p>Completed</p>
+                                </div>
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10 mb-3">
+                                    <p>Loon Sound</p>
+                                    <p>10:42:36 AM</p>
+                                    <p>$200.00</p>
+                                    <p>Completed</p>
+                                </div>
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10 mb-3">
+                                    <p>Loon Sound</p>
+                                    <p>10:42:36 AM</p>
+                                    <p>$200.00</p>
+                                    <p>Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- kontent kanan-->
+                <div>
+                    <div
+                        class="text-white box-border p-4 shadow-2xl mx-2 rounded-2xl bg-gradient-to-r from-purple-800 to-blue-500 w-full md:w-full py-10 px-5">
+                        <i class="fa fa-address-card"></i>
+                        <p class="font-bold">9836 9822 0846 2364</p>
+                    </div>
+
+                    <!-- recent aktivities -->
+                    <div class="py-8">
+                        <div>
+                            <p class="text-xl font-bold ">Recent Activities</p>
+                            <p>2 Maret 2021</p>
+                            <div class="grid grid-cols-2 md:grid-cols-none justify-items-center md:justify-items-start">
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10">
+                                    <p class="font-semibold">Water fill</p>
+                                    <p class="text-gray-500">$200.00</p>
+                                </div>
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10 ">
+                                    <p class="font-semibold">Income Salary</p>
+                                    <p class="text-gray-500">$200.00</p>
+                                </div>
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10">
+                                    <p class="font-semibold">Electric Bill</p>
+                                    <p class="text-gray-500">$200.00</p>
+                                </div>
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10 ">
+                                    <p class="font-semibold">Internet Bill</p>
+                                    <p class="text-gray-500">$200.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="py-8">
+                        <div>
+                            <p class="text-xl font-bold ">Upcoming Payments</p>
+                            <p>2 Maret 2021</p>
+                            <div class="grid grid-cols-2 md:grid-cols-none justify-items-center md:justify-items-start">
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10">
+                                    <p class="font-semibold">Home Rent</p>
+                                    <p class="text-gray-500">$200.00</p>
+                                </div>
+                                <div
+                                    class="grid md:grid-flow-col my-3 w-full justify-items-center md:justify-items-start">
+                                    <img src="../public/imgs/1.jpg" alt="" class="rounded-full w-10 h-10">
+                                    <p class="font-semibold">Car Insurance</p>
+                                    <p class="text-gray-500">$200.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </aside>
+    </main>
+
+    <!-- canvas -->
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Januari', 'Februari', 'Maret', 'Aprli', 'Mei', 'Juni'],
+                datasets: [{
+                    label: '#Your Activity',
+                    data: [12, 19, 10, 7, 16, 3],
+                    backgroundColor: [
+                        'rgba(126, 34, 206, 0.6)',
+                        'rgba(126, 34, 206, 0.7)',
+                        'rgba(126, 34, 206, 0.5)',
+                        'rgba(126, 34, 206, 0.4)',
+                        'rgba(126, 34, 206, 0.5)',
+                        'rgba(126, 34, 206, 0.4)',
+                    ],
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
